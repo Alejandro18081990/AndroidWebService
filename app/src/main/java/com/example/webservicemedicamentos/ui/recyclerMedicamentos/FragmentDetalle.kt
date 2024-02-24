@@ -46,8 +46,6 @@ class FragmentDetalle : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Observa la posible selección del alimento (item del recyclerView) y lo asigna
-        //a la propiedad  alimentoPadre de este fragment
         modelViewMedicamentos.selectedItem.observe(this, Observer { medicamento ->
             medicamentoRecibido = medicamento
             numRegistro.text =
@@ -61,9 +59,9 @@ class FragmentDetalle : Fragment() {
                 medicamentoRecibido?.formaFarmaceutica.toString().lowercase()
             )
             viaAdministracion.text =
-                String.format("- Vía: %s", medicamentoRecibido?.viaAdministracion.toString()).lowercase()
+                String.format("-Vía: %s", medicamentoRecibido?.viaAdministracion.toString()).lowercase()
             urlInformacion.text = String.format(
-                "- Información adicional: %s",
+                "-Información adicional: %s",
                 medicamentoRecibido?.urlInformacion.toString()
             )
             if (medicamentoRecibido!!.esGenerico)
@@ -78,9 +76,4 @@ class FragmentDetalle : Fragment() {
             Linkify.addLinks(urlInformacion, Linkify.WEB_URLS)
         })
     }
-    /*if (medicamentoActual.esGenerico)
-            holder.esGenerico.text = String.format("Especialidad farmaceútica genérica")
-        else
-            holder.esGenerico.text = String.format("Marca comercial")
-*/
 }

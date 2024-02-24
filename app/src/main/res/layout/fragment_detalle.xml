@@ -5,7 +5,7 @@
     android:layout_width="320dp"
     android:layout_height="match_parent"
     android:layout_margin="33dp"
-    app:cardBackgroundColor="#E6E6FA"
+    app:cardBackgroundColor="#85B2CA"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 

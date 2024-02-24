@@ -32,10 +32,10 @@ class MedicamentosAdapter(
         val medicamentoActual = listaMedicamentos[position]
 
         holder.nombreMedicamento.text =
-            String.format("Medicamento: %s", medicamentoActual.nombreMedicamento)
+            String.format("-Medicamento: %s", medicamentoActual.nombreMedicamento)
         holder.formaFarmaceutica.text =
             String.format(
-                "- Forma farmaceútica: %s",
+                "-Forma farmaceútica: %s",
                 medicamentoActual.formaFarmaceutica
             )
 
