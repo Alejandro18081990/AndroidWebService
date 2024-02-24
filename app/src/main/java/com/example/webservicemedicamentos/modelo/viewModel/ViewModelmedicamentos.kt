@@ -25,12 +25,13 @@ class ViewModelMedicamentos(application: Application) : AndroidViewModel(applica
 
     fun getAllMedicamentos(onSuccess: () -> Unit, onError: () -> Unit) {
         val peticion = JsonObjectRequest(Request.Method.GET, url, null,
-             Response.Listener { response ->
+            Response.Listener { response ->
                 try {
                     val resultadosPeticion = response.getJSONArray("resultados")
-                    Log.d("Longitud",resultadosPeticion.length().toString())
+                    Log.d("Longitud", resultadosPeticion.length().toString())
                     for (i in 0 until resultadosPeticion.length()) {
                         val medicamentoJson = resultadosPeticion.getJSONObject(i)
+                        val numeroRegistro = medicamentoJson.getInt("nregistro")
                         val nombremedicamento = medicamentoJson.getString("nombre")
                         val laboratorio = medicamentoJson.getString("labtitular")
                         val requiereReceta = medicamentoJson.getString("receta").toBoolean()
@@ -40,14 +41,17 @@ class ViewModelMedicamentos(application: Application) : AndroidViewModel(applica
                             viaAdministracion.getJSONObject(0).getString("nombre")
                         val formaFarmaceutica = medicamentoJson.getJSONObject("formaFarmaceutica")
                         val nombreFormaFarmaceutica = formaFarmaceutica.getString("nombre")
-
+                        val arrayUrl = medicamentoJson.getJSONArray("docs")
+                        val urlInformacion = arrayUrl.getJSONObject(0).getString("url")
                         val medicamento = Medicamento(
+                            numeroRegistro,
                             nombremedicamento,
                             laboratorio,
                             requiereReceta,
                             esGenerico,
                             nombreViaAdministracion,
-                            nombreFormaFarmaceutica
+                            nombreFormaFarmaceutica,
+                            urlInformacion
                         )
                         listaMedicamentos.add(medicamento)
                     }
@@ -65,8 +69,11 @@ class ViewModelMedicamentos(application: Application) : AndroidViewModel(applica
         cola.add(peticion)
     }
 
-
     fun getMedicamentos(): MutableList<Medicamento> {
         return listaMedicamentos
+    }
+
+    fun selectAlimento(medicamento: Medicamento) {
+        mutableSelectedItem.value = medicamento
     }
 }

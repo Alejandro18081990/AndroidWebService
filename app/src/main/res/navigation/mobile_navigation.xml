@@ -9,4 +9,13 @@
         android:id="@+id/fragment_recycler_medicamentos"
         android:name="com.example.webservicemedicamentos.ui.recyclerMedicamentos.FragmentRecyclerMedicamento"
         tools:layout="@layout/fragment_recycler" />
+
+    <fragment
+        android:id="@+id/nav_fragment_detalle"
+        android:name="com.example.webservicemedicamentos.ui.recyclerMedicamentos.FragmentDetalle"
+        tools:layout="@layout/fragment_detalle" />
+
+    <action
+        android:id="@+id/action_recycler_to_detalle"
+        app:destination="@id/nav_fragment_detalle" />
 </navigation>

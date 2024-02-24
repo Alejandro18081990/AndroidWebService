@@ -1,13 +1,12 @@
 package com.example.webservicemedicamentos.ui.recyclerMedicamentos
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.webservicemedicamentos.R
@@ -29,23 +28,24 @@ class FragmentRecyclerMedicamento : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recycler, container, false)
         modelViewMedicamentos =
             ViewModelProvider(requireActivity())[ViewModelMedicamentos::class.java]
+
+
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         listadoMedicamentos = modelViewMedicamentos.getMedicamentos()
         medicamentoAdapter = MedicamentosAdapter(listadoMedicamentos, modelViewMedicamentos)
         recyclerView.adapter = medicamentoAdapter
         recyclerView
-        Log.d("Entro","")
+
         modelViewMedicamentos.getAllMedicamentos({
             recyclerView.adapter!!.notifyDataSetChanged()
         }, {
 
         })
+        medicamentoAdapter.onItemClick = {medicamento ->
+            modelViewMedicamentos.selectAlimento(medicamento)
+            findNavController().navigate(R.id.nav_fragment_detalle)
+        }
         return view
-    }
-
-
-    fun toast(mensaje: String) {
-        Toast.makeText(requireActivity(), mensaje, Toast.LENGTH_SHORT).show()
     }
 }
