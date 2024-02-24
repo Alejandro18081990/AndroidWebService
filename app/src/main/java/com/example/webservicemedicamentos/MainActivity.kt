@@ -12,7 +12,7 @@ import com.example.webservicemedicamentos.ui.recyclerMedicamentos.FragmentRecycl
 
 
 class MainActivity : AppCompatActivity() {
-
+//VersiónParaEntrega
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -1,6 +1,6 @@
 package com.example.webservicemedicamentos.modelo.entidades
 
-import android.os.Parcelable
+
 
 class Medicamento constructor(
     var numeroRegistro: Int,
@@ -11,5 +11,5 @@ class Medicamento constructor(
     var viaAdministracion: String,
     var formaFarmaceutica: String,
     var urlInformacion : String
-) : java.io.Serializable {
+) {
 }

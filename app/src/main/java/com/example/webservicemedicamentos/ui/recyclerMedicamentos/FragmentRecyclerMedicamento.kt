@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -29,7 +30,6 @@ class FragmentRecyclerMedicamento : Fragment() {
         modelViewMedicamentos =
             ViewModelProvider(requireActivity())[ViewModelMedicamentos::class.java]
 
-
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         listadoMedicamentos = modelViewMedicamentos.getMedicamentos()
@@ -42,7 +42,7 @@ class FragmentRecyclerMedicamento : Fragment() {
         }, {
 
         })
-        medicamentoAdapter.onItemClick = {medicamento ->
+        medicamentoAdapter.onItemClick = { medicamento ->
             modelViewMedicamentos.selectAlimento(medicamento)
             findNavController().navigate(R.id.nav_fragment_detalle)
         }

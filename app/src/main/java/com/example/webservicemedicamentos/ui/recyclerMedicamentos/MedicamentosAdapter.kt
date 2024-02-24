@@ -40,7 +40,7 @@ class MedicamentosAdapter(
             )
 
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onItemClick?.invoke((listaMedicamentos[position]))
         }
     }
@@ -51,5 +51,4 @@ class MedicamentosAdapter(
         val nombreMedicamento: TextView = itemView.findViewById(R.id.caja_nombre_medicamento_rec)
         val formaFarmaceutica: TextView = itemView.findViewById(R.id.caja_forma_farmaceutica_rec)
     }
-
 }

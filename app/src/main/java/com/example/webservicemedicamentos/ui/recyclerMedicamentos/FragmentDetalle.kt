@@ -51,7 +51,8 @@ class FragmentDetalle : Fragment() {
             numRegistro.text =
                 String.format("-NºRegistro: %s", medicamentoRecibido?.numeroRegistro.toString())
             cajaMedicamento.text =
-                String.format("-Nombre: %s", medicamentoRecibido?.nombreMedicamento.toString()).lowercase()
+                String.format("-Nombre: %s", medicamentoRecibido?.nombreMedicamento.toString())
+                    .lowercase()
             laboratorio.text =
                 String.format("-Laboratorio: %s", medicamentoRecibido?.laboratorio.toString())
             cajaFormaFarmaceutica.text = String.format(
@@ -59,7 +60,8 @@ class FragmentDetalle : Fragment() {
                 medicamentoRecibido?.formaFarmaceutica.toString().lowercase()
             )
             viaAdministracion.text =
-                String.format("-Vía: %s", medicamentoRecibido?.viaAdministracion.toString()).lowercase()
+                String.format("-Vía: %s", medicamentoRecibido?.viaAdministracion.toString())
+                    .lowercase()
             urlInformacion.text = String.format(
                 "-Información adicional: %s",
                 medicamentoRecibido?.urlInformacion.toString()
